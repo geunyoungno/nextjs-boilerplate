@@ -4,9 +4,7 @@
     "transpileOnly": true,
     "files": true,
     "compilerOptions": {},
-    "require": [
-      "tsconfig-paths/register"
-    ]
+    "require": ["tsconfig-paths/register"]
   },
   "compilerOptions": {
     "jsx": "preserve",
@@ -14,7 +12,12 @@
     "incremental": true /* Enable incremental compilation */,
     "experimentalDecorators": true /* Enable experimental support for TC39 stage 2 draft decorators. */,
     "emitDecoratorMetadata": true /* Emit design-type metadata for decorated declarations in source files. */,
-    "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
+    "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
+    "paths": {
+      "#pages/*": ["pages/*"],
+      "#public/*": ["public/*"],
+      "#styles/*": ["styles/*"]
+    },
     /* Emit */
     "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
     "declarationDir": "./dist/typings",
@@ -38,12 +41,6 @@
     "noEmit": true,
     "resolveJsonModule": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

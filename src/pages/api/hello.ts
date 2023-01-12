@@ -5,6 +5,6 @@ type TData = {
   name: string;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<TData>) {
+export default function handler(_req: NextApiRequest, res: NextApiResponse<TData>) {
   res.status(200).json({ name: 'John Doe' });
 }

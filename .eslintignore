@@ -1,0 +1,30 @@
+# node_modules
+node_modules/
+
+# testcase
+__test__/*
+__tests__/*
+
+# artiface
+dist
+artifact
+
+# Type Extend
+src/@types/json-schema
+src/index.d.ts
+
+# documentation
+docs
+package.json
+package-lock.json
+
+# Configuration resource
+src/configs/files/*
+
+# Message Resource
+resources
+
+# TypeScript Configuration
+tsconfig.json
+tsconfig.prod.json
+tsconfig.eslint.json

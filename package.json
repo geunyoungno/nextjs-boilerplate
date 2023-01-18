@@ -17,7 +17,7 @@
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-next": "13.1.1",
+    "eslint-config-next": "^13.1.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^26.0.0",
     "eslint-plugin-import": "^2.26.0",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "got": "^12.5.3",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"

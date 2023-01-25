@@ -1,4 +1,4 @@
-import Header from '#component/Header';
+import Header from 'components/Header';
 import { NextPage, GetStaticPaths } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

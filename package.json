@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_MANUAL_SIG_HANDLE=true next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NEXT_MANUAL_SIG_HANDLE=true next start",
     "lint": "next lint"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
+    "@types/cookie": "^0.5.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
@@ -30,9 +31,12 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "cookie": "^0.5.0",
     "got": "^12.5.3",
+    "iron-session": "^6.3.1",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "swr": "^2.0.1"
   }
 }

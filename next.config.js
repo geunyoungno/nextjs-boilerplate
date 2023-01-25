@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   basePath: '/src',
+  pageExtensions: ['tsx', 'ts'],
 };
 
 module.exports = nextConfig;

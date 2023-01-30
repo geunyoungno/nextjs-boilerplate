@@ -19,6 +19,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'next',
+    'plugin:jsx-a11y/recommended',
   ],
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {

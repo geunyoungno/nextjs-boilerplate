@@ -27,5 +27,6 @@
   "editor.formatOnSave": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "jest.autoRun": { "watch": false }
 }

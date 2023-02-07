@@ -28,5 +28,10 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "git.ignoreLimitWarning": true,
-  "jest.autoRun": { "watch": false }
+  "jest.autoRun": { "watch": false },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "eslint.validate": ["typescript", "typescriptreact"]
 }

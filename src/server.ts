@@ -30,9 +30,14 @@ app.prepare().then(() => {
       res.statusCode = 500;
       res.end('internal server error');
     }
-  }).listen(port, (err) => {
-    if (err) throw err;
-    // eslint-disable-next-line no-console
-    console.log(`> Ready on http://${hostname}:${port}`);
-  });
+  })
+    .listen(port, () => {
+      // eslint-disable-next-line no-console
+      console.info(`${port} listen`);
+    })
+    .on('error', (err) => {
+      if (err) throw err;
+      // eslint-disable-next-line no-console
+      console.log(`> Ready on http://${hostname}:${port}`);
+    });
 });

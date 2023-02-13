@@ -1,43 +1,22 @@
-import { createServer } from 'http';
-import next from 'next';
-import { parse } from 'url';
+import fastifyNextjs from '@fastify/nextjs';
+import fastify, { FastifyRequest } from 'fastify';
 
-const dev = process.env.NODE_ENV !== 'production';
-const hostname = 'localhost';
-const port = 3000;
-// when using middleware `hostname` and `port` must be provided below
-const app = next({ dev, hostname, port });
-const handle = app.getRequestHandler();
+const server = fastify();
 
-app.prepare().then(() => {
-  createServer(async (req, res) => {
-    try {
-      // Be sure to pass `true` as the second argument to `url.parse`.
-      // This tells it to parse the query portion of the URL.
-      const parsedUrl = parse(req.url ?? '', true);
-      const { pathname, query } = parsedUrl;
+async function noOpParser(_req: FastifyRequest, payload: unknown) {
+  return payload;
+}
 
-      if (pathname === '/a') {
-        await app.render(req, res, '/a', query);
-      } else if (pathname === '/b') {
-        await app.render(req, res, '/b', query);
-      } else {
-        await handle(req, res, parsedUrl);
-      }
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error('Error occurred handling', req.url, err);
-      res.statusCode = 500;
-      res.end('internal server error');
-    }
-  })
-    .listen(port, () => {
-      // eslint-disable-next-line no-console
-      console.info(`${port} listen`);
-    })
-    .on('error', (err) => {
-      if (err) throw err;
-      // eslint-disable-next-line no-console
-      console.log(`> Ready on http://${hostname}:${port}`);
-    });
+server.register(fastifyNextjs).after(() => {
+  server.addContentTypeParser('text/plain', noOpParser);
+  server.addContentTypeParser('application/json', noOpParser);
+  server.next('/*');
+  server.next('/api/*', { method: undefined });
+});
+
+server.listen({ port: 3000, host: '0.0.0.0' }, (err) => {
+  if (err) throw err;
+
+  // eslint-disable-next-line no-console
+  console.log('Server listening on <http://localhost:3000>');
 });

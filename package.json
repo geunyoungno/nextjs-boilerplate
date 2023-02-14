@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_MANUAL_SIG_HANDLE=true ts-node -r tsconfig-paths/register ./src/server.ts",
+    "dev": "NODE_OPTIONS='--inspect' NEXT_MANUAL_SIG_HANDLE=true ts-node -r tsconfig-paths/register ./src/server.ts",
     "build": "next build",
     "start": "NEXT_MANUAL_SIG_HANDLE=true next start",
     "lint": "next lint",

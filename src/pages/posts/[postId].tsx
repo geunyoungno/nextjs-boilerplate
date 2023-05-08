@@ -1,8 +1,8 @@
+import IPostDto from '#dto/post/IPostDto';
 import Header from 'components/Header';
-import { NextPage, GetStaticPaths } from 'next';
+import { GetStaticPaths, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import IPostDto from '#dto/post/IPostDto';
 
 const Post: NextPage<{ postId: IPostDto['id'] }> = ({ postId }) => {
   const router = useRouter();
@@ -44,19 +44,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 // This also gets called at build time
-// export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsContext<{ postId: string }>) => {
-//   // params contains the post `id`.
-//   // If the route is like /posts/1, then params.id is 1
-//   // const res = await got(`https://.../posts/${params?.postId}`);
-//   // const post = await res.json();
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<{ postId: string }>): Promise<
+  GetStaticPropsResult<{
+    post: IPostDto;
+  }>
+> => {
+  // params contains the post `id`.
+  // If the route is like /posts/1, then params.id is 1
+  // const res = await got(`https://.../posts/${params?.postId}`);
+  // const post = await res.json();
 
-//   // Pass post data to the page via props
-//   return {
-//     props: { post },
-//     // Re-generate the post at most once per second
-//     // if a request comes in
-//     revalidate: 1,
-//   };
-// };
+  // Pass post data to the page via props
+  return {
+    props: {
+      post: {
+        id: params?.postId ?? '-1',
+      },
+    },
+    // Re-generate the post at most once per second
+    // if a request comes in
+    revalidate: 1,
+  };
+};
 
 export default Post;
